@@ -45,7 +45,6 @@ const SplitAnswer = (usersInput, userNumbers) => {
     tmpUserNumbers = tmpUserNumbers.filter(function (value) {
         return !Number.isNaN(value);
     });
-    console.log(tmpUserNumbers, operations , improper)
     return [tmpUserNumbers, operations, improper]
 }
 

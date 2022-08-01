@@ -25,13 +25,6 @@ async function Start() {
 
     let usersInput = await GetInput();
 
-    // if(usersInput == ' '){
-    //     console.log(`
-    //     You can't enter in Nothing! Please try again :)
-    //     `)
-    //     return Start();
-    // }
-
     if(Quit(usersInput)){ 
         process.exit(1);
     }
