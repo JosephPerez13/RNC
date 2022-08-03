@@ -1,17 +1,13 @@
 const IsEqualToZero = (number) => number == 0;
 
 const InputCheck = (check) => {
-    //Replacing all "Spaces" with '' so that I can check, without worrying about spaces. Only Numbers and Operations allowed.
-    check = check.replace(/\s/g, '');
-
     //This Regex is incomplete. It needs to be able to allow Commas. But checking to Ensure that nothing but Numbers and
     //the operations are allowed through
-    if (check.match(/[^0-9\d./*+-]/g)) {
-        return false;
+    if(check.match(/[^/\s/\d./*+-]/g)){
+        return false
     }
-    return true;
+    return true
 }
-
 
 //Splitting the Users Input so that it can be split between Numbers & Operations.
 const SplitAnswer = (usersInput, userNumbers) => {
@@ -21,7 +17,7 @@ const SplitAnswer = (usersInput, userNumbers) => {
     usersInput = usersInput.trim().split(' ');
 
     //This is filtering from the UserInputs to only grab the operations and not the extra space that appears at the end of the array
-    operations = usersInput.filter(x => !parseInt(x) && x != 0)
+    operations = usersInput.filter(x => !parseInt(x) && x != 0 && !x.includes('.'))
 
     //Last minute check to rid of operations with a extra operation or character with it 
     let improper = operations.some( x =>
@@ -72,7 +68,7 @@ const StartOperation = (operations, tmpUserNumbers) => {
 }
 //Handling the check for if we are trying to divide by Zero
 const DivisionByZeroCheck = (secondLast, last, operation, tmpUserNumbers) => {
-
+    
     if((secondLast == 0 || last == 0) && operation == '/'){
         SpliceZeroFromArray(secondLast, last, tmpUserNumbers);
         console.log(`
